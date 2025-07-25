@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Todo List</h1>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div>Total Tasks: <span id="totalTasks">0</span></div>
+      <div>Completed: <span id="completedTasks">0</span></div>
+      <div>Pending: <span id="pendingTasks">0</span></div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="form">
+      <input type="text" id="taskInput" placeholder="Add a todo..." required />
+      <input type="date" id="dateInput" />
+      <button id="addTask"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <!-- Filter & Delete -->
+    <div class="actions">
+      <select id="filter">
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+      <button id="deleteAll">Delete All</button>
+    </div>
+
+    <!-- Task Table -->
+    <div id="taskListContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="taskList">
+          <tr>
+            <td colspan="4">No task found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

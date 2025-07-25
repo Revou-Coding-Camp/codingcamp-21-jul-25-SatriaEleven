@@ -1,0 +1,264 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 40px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: backgroundMove 40s linear infinite;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #334155;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.dashboard div::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+.dashboard div:nth-child(1)::before {
+  content: "\f0ae"; /* list icon */
+}
+
+.dashboard div:nth-child(2)::before {
+  content: "\f00c"; /* check icon */
+  color: #22c55e;
+}
+
+.dashboard div:nth-child(3)::before {
+  content: "\f017"; /* clock icon */
+  color: #facc15;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.form button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 0 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.actions select,
+.actions button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.actions button {
+  background-color: #ef4444;
+  color: white;
+  cursor: pointer;
+}
+
+/* Scrollable list */
+#taskListContainer {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+#taskListContainer::-webkit-scrollbar {
+  width: 8px;
+}
+#taskListContainer::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+tr:hover {
+  background-color: #1e293b;
+}
+
+.status-completed {
+  color: #22c55e;
+}
+
+.status-pending {
+  color: #facc15;
+}
+
+.btn-complete {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #f87171;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ===== Notifikasi Sukses & Error (showAlert) ===== */
+.alert-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  z-index: 9999;
+  animation: fadeInOut 2.5s ease-in-out forwards;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ===== Pop-up Konfirmasi (showConfirm) ===== */
+.confirm-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  background-color: #1f2937;
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  z-index: 10000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.confirm-box p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.confirm-box button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-box .yes-btn {
+  background-color: #16a34a;
+  color: white;
+}
+
+.confirm-box .no-btn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.confirm-box .yes-btn:hover {
+  background-color: #15803d;
+}
+
+.confirm-box .no-btn:hover {
+  background-color: #b91c1c;
+}
