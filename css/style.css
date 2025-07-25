@@ -46,6 +46,15 @@ body::before {
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
+footer{
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
 h1 {
   text-align: center;
   color: #cbd5e1;
